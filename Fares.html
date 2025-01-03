@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fare Management System</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1, h2 {
+            color: #333;
+            text-align: center;
+        }
+
+        form {
+            background: #fff;
+            padding: 20px;
+            margin: 20px auto;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        input, select, button {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #218838;
+        }
+
+        .fares-list {
+            max-width: 400px;
+            margin: 20px auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .fares-list h3 {
+            text-align: center;
+        }
+
+        .fare-item {
+            padding: 10px;
+            border-bottom: 1px solid #ccc;
+        }
+
+        .fare-item:last-child {
+            border-bottom: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>Fare Management System</h1>
+    
+    <h2>Business Case 1: Collection of Fares</h2>
+    <p>This section deals with the collection of fares from various sources such as tolls and parking. Users can input fare details and the system will store them for further processing.</p>
+    <form id="fareCollectionForm">
+        <label for="fareType">Fare Type:</label>
+        <select id="fareType" name="fareType">
+            <option value="toll">Toll</option>
+            <option value="parking">Parking</option>
+        </select><br><br>
+        
+        <label for="amount">Amount:</label>
+        <input type="number" id="amount" name="amount" required><br><br>
+        
+        <button type="submit">Submit Fare</button>
+    </form>
+    
+    <h2>Business Case 2: Sorting of Fares from Tolls and Parking</h2>
+    <div class="fares-list" id="faresList">
+        <h3>Collected Fares</h3>
+    </div>
+
+    <div>
+        <button><a href="daa_coursep.html">Back</a></button>
+    </div>
+
+    <script>
+        const fareCollectionForm = document.getElementById('fareCollectionForm');
+        const faresList = document.getElementById('faresList');
+
+        fareCollectionForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const fareType = document.getElementById('fareType').value;
+            const amount = document.getElementById('amount').value;
+
+            const fareItem = document.createElement('div');
+            fareItem.classList.add('fare-item');
+            fareItem.textContent = `Type: ${fareType}, Amount: $${amount}`;
+
+            faresList.appendChild(fareItem);
+
+            fareCollectionForm.reset();
+        });
+    </script>
+</body>
+</html>
